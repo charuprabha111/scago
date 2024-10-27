@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceed to Payment</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .payment-option {
+      margin-bottom: 20px;
+    }
+
+    .payment-option h3 {
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-group input[type="radio"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .form-group .radio-label {
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .form-group .payment-method {
+      margin-left: 25px;
+    }
+
+    .btn-pay {
+      width: 100%;
+      padding: 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .btn-pay:hover {
+      background-color: #218838;
+    }
+
+    .card-details, .online-transaction, .other-options {
+      display: none; /* Hidden by default */
+    }
+
+    /* Show the corresponding payment option */
+    input[type="radio"]:checked + .payment-method {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Proceed to Payment</h2>
+
+    <form id="paymentForm">
+      <!-- Payment Options -->
+      <div class="payment-option">
+        <h3>Select Payment Method</h3>
+
+        <div class="form-group">
+          <input type="radio" id="cardPayment" name="paymentMethod" value="card">
+          <label for="cardPayment" class="radio-label">Credit/Debit Card</label>
+          <div class="payment-method card-details">
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19">
+            </div>
+            <div class="form-group">
+              <label for="cardHolderName">Card Holder Name</label>
+              <input type="text" id="cardHolderName" name="cardHolderName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="expiryDate">Expiry Date</label>
+              <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="password" id="cvv" name="cvv" placeholder="123" maxlength="3">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="radio" id="onlineTransaction" name="paymentMethod" value="onlineTransaction">
+          <label for="onlineTransaction" class="radio-label">Online Transaction (UPI)</label>
+          <div class="payment-method online-transaction">
+            <div class="form-group">
+              <label for="upiId">UPI ID</label>
+              <input type="text" id="upiId" name="upiId" placeholder="example@upi">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="radio" id="otherPayments" name="paymentMethod" value="other">
+          <label for="otherPayments" class="radio-label">Other Payment Methods</label>
+          <div class="payment-method other-options">
+            <div class="form-group">
+              <label for="otherMethod">Choose Payment Option</label>
+              <select id="otherMethod" name="otherMethod">
+                <option value="netBanking">Net Banking</option>
+                <option value="wallet">Digital Wallet</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Proceed to Pay Button -->
+      <button type="submit" class="btn-pay">Proceed to Pay</button>
+    </form>
+  </div>
